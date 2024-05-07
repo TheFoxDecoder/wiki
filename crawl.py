@@ -14,13 +14,17 @@ import pandas as pd
 
 class Crawler:
     def __init__(self,url):
-        self.url = url
+        self.url = Crawler.get_url()
         self.urls = self.get_all_urls(self.url)
         self.domain = self.get_domain(self.url) # returns in as hash-number
         
         self.internal = []
         self.tot = 0
-
+    
+    @staticmethod
+    def get_url(url):
+        return url
+    
     def get_domain(self,url):
         parsed_url = urlparse(url)
         domain = parsed_url.netloc
